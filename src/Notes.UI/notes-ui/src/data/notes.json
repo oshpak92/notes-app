@@ -1,0 +1,21 @@
+[{
+    "id": 1,
+    "title": "Note 1",
+    "text": "this is a text of the note",
+    "createdDate": "",
+    "modifiedDate": ""
+  },
+  {
+    "id": 2,
+    "title": "Note 1",
+    "text": "this is a text of the note 1",
+    "createdDate": "",
+    "modifiedDate": ""
+  },    
+  {
+    "id": 3,
+    "title": "Note 1",
+    "text": "this is a text of the note",
+    "createdDate": "",
+    "modifiedDate": ""
+  }]
