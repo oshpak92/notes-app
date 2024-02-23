@@ -1,6 +1,6 @@
-﻿using Notes.Persistance.Entities;
+﻿using Notes.Persistence.Entities;
 
-namespace Notes.Persistance
+namespace Notes.Persistence
 {
     public class NotesRepository : INotesRepository
     {

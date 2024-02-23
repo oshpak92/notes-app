@@ -1,6 +1,6 @@
-﻿namespace Notes.Persistance.Entities
+﻿namespace Notes.Persistence.Entities
 {
-    public class NoteEntity
+    public record NoteEntity
     {
         public int Id { get; set; }
         public string? Title { get; set; }

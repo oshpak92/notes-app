@@ -1,7 +1,4 @@
 ﻿namespace Notes.DTO.Responses
 {
-    public class CreateNoteResponse
-    {
-        public int Id { get; set; }
-    }
+    public record CreateNoteResponse(int Id);
 }

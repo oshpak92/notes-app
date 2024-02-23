@@ -2,11 +2,5 @@
 
 namespace Notes.DTO.Requests
 {
-    public class CreateNoteRequest
-    {
-        [Required]
-        public string? Title { get; set; }
-
-        public string? Text { get; set; }
-    }
+    public record CreateNoteRequest([Required] string? Title, [Required] string? Text);
 }

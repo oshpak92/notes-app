@@ -2,18 +2,14 @@
 using CSharpFunctionalExtensions;
 using MediatR;
 using Notes.BL.Errors;
-using Notes.Persistance;
-using Notes.Persistance.Entities;
+using Notes.Persistence;
+using Notes.Persistence.Entities;
 
 namespace Notes.BL.Commands
 {
     public class CreateNote
     {
-        public class Command : IRequest<Result<int, Error>>
-        {
-            public string? Title { get; set; }
-            public string? Text { get; set; }
-        }
+        public record Command(string? Title, string? Text) : IRequest<Result<int, Error>> { }
 
         public class Handler : IRequestHandler<Command, Result<int, Error>>
         {

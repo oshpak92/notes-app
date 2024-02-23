@@ -1,7 +1,7 @@
 using Common.System;
 using Notes.BL;
-using Notes.Persistance;
-using Notes.Persistance.Entities;
+using Notes.Persistence;
+using Notes.Persistence.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 

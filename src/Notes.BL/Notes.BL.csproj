@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Common.System\Common.System.csproj" />
-    <ProjectReference Include="..\Notes.Persistance\Notes.Persistance.csproj" />
+    <ProjectReference Include="..\Notes.Persistance\Notes.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

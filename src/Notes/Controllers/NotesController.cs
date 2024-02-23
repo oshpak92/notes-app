@@ -32,9 +32,9 @@ namespace Notes.Controllers
         [ProducesResponseType(typeof(WebServiceError), StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<UpdateNoteResponse>> UpdateNote([FromBody] UpdateNoteRequest request)
         {
-            var result = await _mediator.Send(new UpdateNote.Command() { Id = request.Id, Text = request.Text, Title = request.Title });
+            var result = await _mediator.Send(new UpdateNote.Command(request.Id, request.Title, request.Text));
 
-            return this.Result(result.Map(r => new UpdateNoteResponse() { Id = request.Id }));
+            return this.Result(result.Map(r => new UpdateNoteResponse(request.Id)));
         }
 
         [HttpPost]
@@ -43,9 +43,9 @@ namespace Notes.Controllers
         [ProducesResponseType(typeof(WebServiceError), StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<CreateNoteResponse>> CreateNote([FromBody] CreateNoteRequest request)
         {
-            var result = await _mediator.Send(new CreateNote.Command() { Text = request.Text, Title = request.Title });
+            var result = await _mediator.Send(new CreateNote.Command(request.Title, request.Text));
 
-            return this.Result(result.Map(x => new CreateNoteResponse() { Id = x }));
+            return this.Result(result.Map(x => new CreateNoteResponse(x)));
         }
 
         [HttpDelete]
@@ -54,7 +54,7 @@ namespace Notes.Controllers
         [ProducesResponseType(typeof(WebServiceError), StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> DeleteNote([FromRoute] int id)
         {
-            return this.Result(await _mediator.Send(new DeleteNote.Command() { Id = id }));
+            return this.Result(await _mediator.Send(new DeleteNote.Command(id)));
         }
 
         [HttpGet]
@@ -66,15 +66,9 @@ namespace Notes.Controllers
             var result = await _mediator.Send(new GetNotes.Query());
 
             return this.Result(
-                result.Map(
-                    r => r.Notes!.Select(x => new GetNoteResponse()
-                    {
-                        Id = x.Id,
-                        Title = x.Title,
-                        Text = x.Text,
-                        CreatedDate = x.CreatedDate,
-                        ModifiedDate = x.ModifiedDate
-                    }).ToList()));
+                result.Map(r 
+                    => r.Notes!.Select(x 
+                        => new GetNoteResponse(x.Id, x.Title, x.Text, x.CreatedDate, x.ModifiedDate)).ToList()));
         }
 
         [HttpGet]
@@ -83,17 +77,11 @@ namespace Notes.Controllers
         [ProducesResponseType(typeof(WebServiceError), StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<List<GetNoteResponse>>> GetNote([FromRoute] int id)
         {
-            var result = await _mediator.Send(new GetNote.Query() { Id = id });
+            var result = await _mediator.Send(new GetNote.Query(id));
 
             return this.Result(
-                result.Map(r => new GetNoteResponse()
-                {
-                    Id = r.Id,
-                    Title = r.Title,
-                    Text = r.Text,
-                    CreatedDate = r.CreatedDate,
-                    ModifiedDate = r.ModifiedDate
-                }));
+                result.Map(r
+                    => new GetNoteResponse(r.Id, r.Title, r.Text, r.CreatedDate, r.ModifiedDate)));
         }
     }
 }

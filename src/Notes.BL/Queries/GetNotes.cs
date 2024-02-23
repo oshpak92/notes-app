@@ -1,15 +1,13 @@
 ﻿using CSharpFunctionalExtensions;
 using MediatR;
 using Notes.BL.Errors;
-using Notes.Persistance;
+using Notes.Persistence;
 
 namespace Notes.BL.Queries
 {
     public class GetNotes
     {
-        public class Query : IRequest<Result<Data, Error>>
-        {
-        }
+        public record Query : IRequest<Result<Data, Error>>;
 
         public class Handler : IRequestHandler<Query, Result<Data, Error>>
         {
@@ -24,25 +22,13 @@ namespace Notes.BL.Queries
             {
                 var notes = await _notesRepository.GetAllNotes();
 
-                return new Data()
-                {
-                    Notes = notes.Select(x => new Models.Note()
-                    {
-                        Id = x.Id,
-                        Text = x.Text,
-                        Title = x.Title,
-                        ModifiedDate = x.ModifiedDate,
-                        CreatedDate = x.CreatedDate,
-                    }).ToList(),
-                    Count = notes.Count()
-                };
+                return new Data(notes
+                    .Select(x => new Models.Note(x.Id, x.Title, x.Text, x.ModifiedDate, x.CreatedDate))
+                    .ToList(),
+                    notes.Count());
             }
         }
 
-        public class Data
-        {
-            public IList<Models.Note>? Notes { get; set; }
-            public int Count { get; set; }
-        }
+        public record Data(IList<Models.Note>? Notes, int Count);
     }
 }

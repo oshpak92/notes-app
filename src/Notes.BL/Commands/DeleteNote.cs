@@ -1,16 +1,13 @@
 ﻿using CSharpFunctionalExtensions;
 using MediatR;
 using Notes.BL.Errors;
-using Notes.Persistance;
+using Notes.Persistence;
 
 namespace Notes.BL.Commands
 {
     public class DeleteNote
     {
-        public class Command : IRequest<Result<Unit, Error>>
-        {
-            public int Id { get; set; }
-        }
+        public record Command(int Id) : IRequest<Result<Unit, Error>> { }
 
         public class Handler : IRequestHandler<Command, Result<Unit, Error>>
         {

@@ -9,7 +9,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notes.BL", "Notes.BL\Notes.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.System", "Common.System\Common.System.csproj", "{74142A43-C225-4EE7-B493-322A5C6BAF8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notes.Persistance", "Notes.Persistance\Notes.Persistance.csproj", "{33195729-0307-4BEE-8DE4-A3A188425F58}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notes.Persistence", "Notes.Persistance\Notes.Persistence.csproj", "{33195729-0307-4BEE-8DE4-A3A188425F58}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00 - Common", "00 - Common", "{AD330BC7-1F45-4514-AB39-2569DDDECF69}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - Persistence", "01 - Persistence", "{AE5786F3-A4AF-44DA-9654-FFAB08AE4A52}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Bl", "02 - Bl", "{658CFBCE-F034-4603-8119-CE6F6837D5A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +42,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3BED7AA4-33AC-45C8-9ACD-A01E58D7F4A8} = {658CFBCE-F034-4603-8119-CE6F6837D5A1}
+		{74142A43-C225-4EE7-B493-322A5C6BAF8E} = {AD330BC7-1F45-4514-AB39-2569DDDECF69}
+		{33195729-0307-4BEE-8DE4-A3A188425F58} = {AE5786F3-A4AF-44DA-9654-FFAB08AE4A52}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9F41D59F-9B9C-4AF3-ADAB-33EB7501CF5F}
