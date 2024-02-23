@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NotesApiService } from '../../services/notes-api/notes-api.service';
 import { Router } from '@angular/router';
 
@@ -11,23 +10,27 @@ import { Router } from '@angular/router';
   styleUrl: './add-note.component.scss'
 })
 export class AddNoteComponent implements OnInit {
-  addNoteFormGroup!: FormGroup;
+  titleControl = new FormControl<string|null>(null, [Validators.required]);
+  textControl = new FormControl<string|null>(null, [Validators.required]);
+  addNoteFormGroup =  new FormGroup({
+    title: this.titleControl,
+    text: this.textControl
+  });
   
-  constructor(private router: Router,private apiService: NotesApiService, private location: Location){
+  constructor(private router: Router, private apiService: NotesApiService){
   }
 
   ngOnInit(): void {
-    this.addNoteFormGroup = new FormGroup({
-      title: new FormControl(),
-      text: new FormControl()
-    });
   }
 
   onSubmit() {
+    if(this.addNoteFormGroup.invalid)
+      return;
+
     const value = this.addNoteFormGroup.value;
     this.apiService.createNote({
-      title: value.title,
-      text: value.text,
+      title: value.title!,
+      text: value.text!,
     }).subscribe(_ => {
       this.router.navigate(["/"]);
     });

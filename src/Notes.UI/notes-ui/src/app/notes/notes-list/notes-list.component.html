@@ -17,10 +17,9 @@
         <td>
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown button
+                  Actions
                 </button>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" routerLinkActive="active" routerLink="/create-note">Edit</a></li>
                   <li><a class="dropdown-item" routerLinkActive="active" routerLink="/note-details/{{note.id}}">View</a></li>
                   <li><a class="dropdown-item" routerLink="" (click)="deleteNote(note.id)">Delete</a></li>
                 </ul>

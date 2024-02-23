@@ -8,6 +8,8 @@ namespace Notes.Persistance
 
         Task<IEnumerable<NoteEntity>> GetAllNotes();
 
+        Task<NoteEntity?> GetNote(int id);
+
         Task DeleteNote(int id);
     }
 }

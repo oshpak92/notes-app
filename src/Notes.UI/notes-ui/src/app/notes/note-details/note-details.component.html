@@ -1,1 +1,41 @@
-<p>note-details works!</p>
+<div class="row">
+    <div class="col-6 m-auto">
+        <div class="note m-auto">
+            <div class="note-header">
+                <h1>Details:</h1>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="noteFormGroup" (ngSubmit)="onSubmit()">
+                    <div class="form-group col-12">
+                        <label for="name" class="form-label">Title:</label>
+                        <input type="text" class="form-control" formControlName="title">
+                        <span class="text-danger"
+                        *ngIf="
+                            (titleControl.touched) &&
+                            titleControl.errors?.['required']"
+                      >
+                        Title is required
+                      </span>
+                    </div>
+                    
+                    <div class="form-group col-12">
+                        <label for="name" class="form-label">Note:</label>
+                        <textarea type="text" class="form-control" formControlName="text"></textarea>
+                        <span class="text-danger"
+                        *ngIf="
+                            (textControl.touched) &&
+                            textControl.errors?.['required']"
+                      >
+                        Text is required
+                      </span>
+                    </div>
+                    
+                    <div class="form-group col-12 mt-2">
+                        <button type="submit" [disabled]="noteFormGroup.invalid || !noteFormGroup.touched" class="btn btn-primary">Save</button>
+                        <button class="btn btn-secondary ms-2" (click)="onBack()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

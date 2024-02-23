@@ -36,5 +36,10 @@ namespace Notes.Persistance
         {
             return Task.FromResult(_notesStore.AsEnumerable());
         }
+
+        public Task<NoteEntity?> GetNote(int id)
+        {
+            return Task.FromResult(_notesStore.FirstOrDefault(x => x.Id == id));
+        }
     }
 }

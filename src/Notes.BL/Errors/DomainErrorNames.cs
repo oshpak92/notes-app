@@ -10,7 +10,6 @@
     {
         //not found errors
         public const string NOTE_NOT_FOUND = "Note was not found.";
-
-        public static readonly Error UserNotAuthorizedError = new Error(DomainErrorNames.BadRequest, NOTE_NOT_FOUND);
+        public static readonly Error NoteNotFoundError = new Error(DomainErrorNames.BadRequest, NOTE_NOT_FOUND);
     }
 }

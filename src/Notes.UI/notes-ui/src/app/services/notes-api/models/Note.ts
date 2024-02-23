@@ -1,5 +1,8 @@
-export interface Note {
+export interface IdItem {
     id: number;
+}
+
+export interface Note extends IdItem{
     title: string;
     text: string;
     createdDate: string;
@@ -11,15 +14,15 @@ export interface NotesResponse {
     notesCount: number;
 }
 
-export interface CreaNote {
+export interface CreateNote {
     title: string;
     text: string;
 }
 
-export interface CreateNoteResponse {
-    id: number;
+export interface UpdateNote extends IdItem {
     title: string;
     text: string;
-    createdDate: string;
-    modifiedDate: string;
 }
+
+export interface CreateNoteResponse extends IdItem {}
+export interface UpdateNoteResponse extends IdItem {}
